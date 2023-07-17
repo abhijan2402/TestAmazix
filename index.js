@@ -4,6 +4,7 @@ const { createServer } = require("http");
 // const port = process.env.PORT || 4000
 const envVariables = require('dotenv');
 const connectDB = require("./src/database");
+const getTableData = require("./src/routes/global/get");
 
 envVariables.config()
 
@@ -26,7 +27,7 @@ httpServer.listen(PORT, () => {
 // app.listen(PORT, () => {
 //     console.log(`API listening on PORT ${PORT} `)
 // })
-
+app.use(getTableData)
 app.get('/', (req, res) => {
     res.send('Hey this is my API running 🥳')
 })
